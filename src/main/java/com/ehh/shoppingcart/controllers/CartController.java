@@ -18,15 +18,15 @@ import com.ehh.shoppingcart.model.OrderItem;
 @RequestMapping("/cart")
 public class CartController {
 
-	@Autowired
-	private Cart shoppingCart;
+    @Autowired
+    private Cart shoppingCart;
 
-	@RequestMapping(value = "/total", method = RequestMethod.POST)
-	public ResponseEntity<String> CalculateTotal(@RequestBody List<OrderItem> itemsOrdered) {
-		BigDecimal total = new BigDecimal("0.0");
-		if(itemsOrdered != null && !itemsOrdered.isEmpty()) {
-			total = shoppingCart.calculateTotal(itemsOrdered);
-		}
-		return new ResponseEntity<String>(total.toPlainString(), HttpStatus.OK);
-	}
+    @RequestMapping(value = "/total", method = RequestMethod.POST)
+    public ResponseEntity<String> CalculateTotal(@RequestBody List<OrderItem> itemsOrdered) {
+        BigDecimal total = new BigDecimal("0.0");
+        if(itemsOrdered != null && !itemsOrdered.isEmpty()) {
+            total = shoppingCart.calculateTotal(itemsOrdered);
+        }
+        return new ResponseEntity<String>(total.toPlainString(), HttpStatus.OK);
+    }
 }

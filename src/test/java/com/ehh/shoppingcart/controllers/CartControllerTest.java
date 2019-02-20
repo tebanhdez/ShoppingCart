@@ -29,45 +29,45 @@ import com.ehh.shoppingcart.model.Cart;
 @SpringBootTest
 public class CartControllerTest {
 
-	@Mock
-	private Cart shoppingCart;
+    @Mock
+    private Cart shoppingCart;
 
-	@InjectMocks
-	private CartController cartCtrl;
+    @InjectMocks
+    private CartController cartCtrl;
 
-	private MockMvc mvc;
+    private MockMvc mvc;
 
-	@Before
-	public void setUp() {
-		MockitoAnnotations.initMocks(this);
-		mvc = MockMvcBuilders.standaloneSetup(cartCtrl).build();
-	}
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        mvc = MockMvcBuilders.standaloneSetup(cartCtrl).build();
+    }
 
-	@Test
-	public void testEmptyCart() throws Exception {
-		String payLoad = "[]";
-		this.mvc.perform(post("http://localhost:8080/cart/total")
-				.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).content(payLoad))
-				.andExpect(status().isOk()).andExpect(content().string("0.0"));
-	}
+    @Test
+    public void testEmptyCart() throws Exception {
+        String payLoad = "[]";
+        this.mvc.perform(post("http://localhost:8080/cart/total")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).content(payLoad))
+                .andExpect(status().isOk()).andExpect(content().string("0.0"));
+    }
 
-	@Test
-	public void testOneItemCartTotal() throws Exception {
-		String payLoad = "[{\"sku\": \"A\",\"quantity\": 2}]";
-		when(shoppingCart.calculateTotal(org.mockito.ArgumentMatchers.any())).thenReturn(new BigDecimal("1.0"));
-		this.mvc.perform(post("http://localhost:8080/cart/total")
-				.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).content(payLoad))
-				.andExpect(status().isOk()).andExpect(content().string("1.0"));
-		verify(shoppingCart, times(1)).calculateTotal(org.mockito.ArgumentMatchers.any());
-	}
+    @Test
+    public void testOneItemCartTotal() throws Exception {
+        String payLoad = "[{\"sku\": \"A\",\"quantity\": 2}]";
+        when(shoppingCart.calculateTotal(org.mockito.ArgumentMatchers.any())).thenReturn(new BigDecimal("1.0"));
+        this.mvc.perform(post("http://localhost:8080/cart/total")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).content(payLoad))
+                .andExpect(status().isOk()).andExpect(content().string("1.0"));
+        verify(shoppingCart, times(1)).calculateTotal(org.mockito.ArgumentMatchers.any());
+    }
 
-	@Test
-	public void testMultipleItemsCartTotal() throws Exception {
-		String payLoad = "[{\"sku\": \"A\",\"quantity\": 2},{\"sku\": \"B\",\"quantity\": 2} ]";
-		when(shoppingCart.calculateTotal(org.mockito.ArgumentMatchers.any())).thenReturn(new BigDecimal("2.0"));
-		this.mvc.perform(post("http://localhost:8080/cart/total")
-				.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).content(payLoad))
-				.andExpect(status().isOk()).andExpect(content().string("2.0"));
-		verify(shoppingCart, times(1)).calculateTotal(org.mockito.ArgumentMatchers.any());
-	}
+    @Test
+    public void testMultipleItemsCartTotal() throws Exception {
+        String payLoad = "[{\"sku\": \"A\",\"quantity\": 2},{\"sku\": \"B\",\"quantity\": 2} ]";
+        when(shoppingCart.calculateTotal(org.mockito.ArgumentMatchers.any())).thenReturn(new BigDecimal("2.0"));
+        this.mvc.perform(post("http://localhost:8080/cart/total")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).content(payLoad))
+                .andExpect(status().isOk()).andExpect(content().string("2.0"));
+        verify(shoppingCart, times(1)).calculateTotal(org.mockito.ArgumentMatchers.any());
+    }
 }

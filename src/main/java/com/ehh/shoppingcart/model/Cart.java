@@ -11,18 +11,18 @@ import com.ehh.shoppingcart.services.PricingCalculator;
 @Component
 public class Cart {
 
-	private final PricingCalculator calculator;
+    private final PricingCalculator calculator;
 
-	@Autowired
-	public Cart(PricingCalculator calc) {
-		this.calculator = calc;
-	}
+    @Autowired
+    public Cart(PricingCalculator calc) {
+        this.calculator = calc;
+    }
 
-	public BigDecimal calculateTotal(List<OrderItem> items) {
-		BigDecimal total = new BigDecimal(0);
-		for (OrderItem orderItem : items) {
-			total = total.add(calculator.calculatePrice(orderItem));
-		}
-		return total;
-	}
+    public BigDecimal calculateTotal(List<OrderItem> items) {
+        BigDecimal total = new BigDecimal(0);
+        for (OrderItem orderItem : items) {
+            total = total.add(calculator.calculatePrice(orderItem));
+        }
+        return total;
+    }
 }
