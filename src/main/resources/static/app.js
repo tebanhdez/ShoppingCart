@@ -1,13 +1,12 @@
-var userApp = angular.module('user', []);
+var marketApp = angular.module('market', []);
 
-userApp.controller('MainController', function($http, $window) {
+marketApp.controller('MainController', function($http, $window) {
     var vm = this;
 
-    vm.activeUser;
-    vm.users = [{'sku': 'A', 'name':'Apples', 'price': '25ct'}, {'sku': 'O', 'name':'Oranges', 'price':'30ct'}, {'sku': 'B', 'name':'Bananas', 'price':'15ct'}, {'sku': 'P', 'name':'Papayas', 'price':'50ct'}];
+    vm.products = [{'sku': 'A', 'name':'Apples', 'price': '25ct'}, {'sku': 'O', 'name':'Oranges', 'price':'30ct'}, {'sku': 'B', 'name':'Bananas', 'price':'15ct'}, {'sku': 'P', 'name':'Papayas', 'price':'50ct'}];
     vm.selectedItems = [];
-    vm.showList = true;
     vm.totalAmount = 0;
+
     vm.selectItem = function(item) {
         vm.selectedItems.push({'sku': item.sku, 'quantity': 1, 'name': item.name, 'price': item.price});
         vm.checkOut();

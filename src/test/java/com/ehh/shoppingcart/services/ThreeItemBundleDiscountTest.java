@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.ehh.shoppingcart.model.OrderItem;
 
-public class ThreeItemBundleDiscount {
+public class ThreeItemBundleDiscountTest {
 
     private PriceRule priceByDiscount = new ThreeItemBundleDiscountRule();
 
