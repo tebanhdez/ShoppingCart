@@ -38,11 +38,6 @@ userApp.controller('MainController', function($http, $window) {
         vm.calculateTotal(orderedItems);
     };
 
-    vm.goToEdit = function(user) {
-        vm.activeUser = user;
-        vm.showList = false;
-    };
-
     vm.calculateTotal = function(orderedItemsJson) {
         $http.post('/cart/total', orderedItemsJson)
         .then(function(response) {
