@@ -32,7 +32,6 @@ userApp.controller('MainController', function($http, $window) {
             }
         });
         angular.forEach(order, function(value, key){
-            console.log("SKU:" + key + " , QTY: " + value);
             orderedItems.push({'sku': key, 'quantity': value});
         });
         vm.calculateTotal(orderedItems);
