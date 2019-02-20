@@ -33,7 +33,10 @@ marketApp.controller('MainController', function($http, $window) {
         angular.forEach(order, function(value, key){
             orderedItems.push({'sku': key, 'quantity': value});
         });
-        vm.calculateTotal(orderedItems);
+        if(vm.selectedItems.length > 0)
+            vm.calculateTotal(orderedItems);
+        else
+            vm.totalAmount = 0;
     };
 
     vm.calculateTotal = function(orderedItemsJson) {
