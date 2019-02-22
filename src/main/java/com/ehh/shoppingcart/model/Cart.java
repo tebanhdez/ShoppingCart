@@ -26,8 +26,10 @@ public class Cart {
      */
     public BigDecimal calculateTotal(List<OrderItem> items) {
         BigDecimal total = new BigDecimal(0);
-        for (OrderItem orderItem : items) {
-            total = total.add(calculator.calculatePrice(orderItem));
+        if(items != null && !items.isEmpty()) {
+            for (OrderItem orderItem : items) {
+                total = total.add(calculator.calculatePrice(orderItem));
+            }
         }
         return total;
     }

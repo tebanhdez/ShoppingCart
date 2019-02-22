@@ -58,4 +58,12 @@ public class CartTest {
         assertThat("Cart failed calculation", cart.calculateTotal(itemList), is(testDecimal));
         verify(calculator, times(0)).calculatePrice(org.mockito.ArgumentMatchers.any());
     }
+    @Test
+    public void NullItemTest() {   
+        List<OrderItem> itemList = null;
+        BigDecimal testDecimal = new BigDecimal("0");
+        when(calculator.calculatePrice(org.mockito.ArgumentMatchers.any())).thenReturn(testDecimal);
+        assertThat("Cart failed calculation", cart.calculateTotal(itemList), is(testDecimal));
+        verify(calculator, times(0)).calculatePrice(org.mockito.ArgumentMatchers.any());
+    }
 }
