@@ -42,10 +42,11 @@ public class CartTest {
 
     @Test
     public void TwoItemsTest() {
-        BigDecimal testDecimal = new BigDecimal("1");
+        BigDecimal testBananasPrice = new BigDecimal("1");
+        BigDecimal testOrangesPrice = new BigDecimal("2");
         List<OrderItem> itemList = Arrays.asList(new OrderItem("B", 1), new OrderItem("O", 1));
-        when(calculator.calculatePrice(org.mockito.ArgumentMatchers.any())).thenReturn(testDecimal).thenReturn(testDecimal);
-        assertThat("Cart failed calculation", cart.calculateTotal(itemList), is(new BigDecimal("2")));
+        when(calculator.calculatePrice(org.mockito.ArgumentMatchers.any())).thenReturn(testBananasPrice).thenReturn(testOrangesPrice);
+        assertThat("Cart failed calculation", cart.calculateTotal(itemList), is(new BigDecimal("3")));
         verify(calculator, times(2)).calculatePrice(org.mockito.ArgumentMatchers.any());
     }
 
