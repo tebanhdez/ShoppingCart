@@ -3,7 +3,7 @@ var marketApp = angular.module('market', []);
 marketApp.controller('MainController', function($http, $window) {
     var vm = this;
 
-    vm.products = [{'sku': 'A', 'name':'Apples', 'price': '25ct'}, {'sku': 'O', 'name':'Oranges', 'price':'30ct'}, {'sku': 'B', 'name':'Bananas', 'price':'15ct'}, {'sku': 'P', 'name':'Papayas', 'price':'50ct'}];
+    vm.products = [{'sku': 'A', 'name':'Apples', 'price': '25ct'}, {'sku': 'O', 'name':'Oranges', 'price':'30ct'}, {'sku': 'B', 'name':'Bananas', 'price':'15ct'}, {'sku': 'P', 'name':'Papayas', 'price':'50ct (Sale 3x2)'}];
     vm.selectedItems = [];
     vm.totalAmount = 0;
 
