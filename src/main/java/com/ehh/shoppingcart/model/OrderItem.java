@@ -1,5 +1,8 @@
 package com.ehh.shoppingcart.model;
 
+/*
+ * OrderItem bean
+ */
 public class OrderItem {
 
     private String sku;

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ehh.shoppingcart.model.Cart;
 import com.ehh.shoppingcart.model.OrderItem;
-
+/*
+ * End-points for Cart operations
+ */
 @RestController
 @RequestMapping("/cart")
 public class CartController {
@@ -21,6 +23,11 @@ public class CartController {
     @Autowired
     private Cart shoppingCart;
 
+    /*
+     * Calculate the total amount of the shopping cart items.
+     * @param List of {OrderItem}
+     * @return total amount
+     */
     @RequestMapping(value = "/total", method = RequestMethod.POST)
     public ResponseEntity<String> CalculateTotal(@RequestBody List<OrderItem> itemsOrdered) {
         BigDecimal total = new BigDecimal("0.0");

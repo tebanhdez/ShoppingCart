@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ehh.shoppingcart.services.PricingCalculator;
-
+/*
+ * Cart class to handle Shopping cart operations.
+ */
 @Component
 public class Cart {
 
@@ -18,6 +20,10 @@ public class Cart {
         this.calculator = calc;
     }
 
+    /*
+     * Method to calculate price of the given items list
+     * @param {OrderItem} list.
+     */
     public BigDecimal calculateTotal(List<OrderItem> items) {
         BigDecimal total = new BigDecimal(0);
         for (OrderItem orderItem : items) {
