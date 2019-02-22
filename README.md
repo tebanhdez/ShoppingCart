@@ -1,5 +1,5 @@
 
-# Shooping Cart Assesstment
+# Shopping Cart Assessment
 
 ## 💡 Synopsis
 
@@ -23,7 +23,7 @@ To build the project, just use:
 The command compiles the project and runs the tests, then  it launches the application, so you can check by yourself.
 
 ```
-	mvn clean install spring-boot:run
+	mvn spring-boot:run
 ```
 
 ## ▶️ Usage
